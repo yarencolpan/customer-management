@@ -24,7 +24,7 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public Customer getCustomerById(@PathVariable int id){
+    public Customer getCustomerById(@PathVariable long id){
  //@PathVariable URL’nin içindeki değişkeni metot parametresine bağlar
         return customerService.getCustomerById(id);
     }
@@ -43,7 +43,7 @@ public class CustomerController {
     //Update işlemi
 
     @PutMapping("/{id}")
-    public Customer updateCustomer(@PathVariable int id, @RequestBody Customer updated){
+    public Customer updateCustomer(@PathVariable long id, @RequestBody Customer updated){
         return customerService.updateCustomer(id, updated);
 
     }
@@ -51,7 +51,7 @@ public class CustomerController {
 
     //Delete islemi
     @DeleteMapping("/{id}")
-    public void deleteCustomer(@PathVariable int id){
+    public void deleteCustomer(@PathVariable long id){
         customerService.deleteCustomer(id);
     }
 }
