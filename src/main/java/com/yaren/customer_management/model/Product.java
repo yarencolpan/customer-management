@@ -27,4 +27,5 @@ public class Product {
     private LocalDateTime createdDate;
     private Long lastModifiedById;
     private LocalDateTime lastModifiedDate;
-    private Long deletedById
+    private Long deletedById;
+}
