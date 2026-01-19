@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,4 +28,21 @@ public class Customer {
     private String phone;
 
     private String adress;
+
+    private Long createdById;    //bu kaydı oluşturan kullanıcının ID'si
+
+    private LocalDateTime createdDate;    //kayıdın ilk kez oluşturulduğu tarih
+
+    private long lastModifiedById;    //kaydı en son güncelleyen kullanıcının ID'si
+
+    private LocalDateTime lastModifiedByDate;     //kayıt en son ne zaman güncellendi
+
+    private Long deletedById;    //kaydı silen kullanıcının ıd si
+
+
+
+
+
+
+
 }
