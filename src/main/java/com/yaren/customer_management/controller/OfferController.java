@@ -1,7 +1,7 @@
 package com.yaren.customer_management.controller;
 
 import com.yaren.customer_management.model.Offer;
-import com.yaren.customer_management.service.OfferServise;
+import com.yaren.customer_management.service.OfferService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,29 +12,37 @@ import java.util.List;
 @RequestMapping("/offers")
 public class OfferController {
 
-    private final OfferServise offerServise;
+    private final OfferService offerService;
 
     @GetMapping
     public List<Offer> getAllOffers() {
-        return offerServise.getAllOffers();
+        return offerService.getAllOffers();
 }
 
     @GetMapping("/{id}")
     public Offer getOfferById(@PathVariable Long id) {
-        return offerServise.getOfferById(id);
+        return offerService.getOfferById(id);
     }
 
     @PostMapping
     public Offer createOffer(@RequestBody Offer offer) {
-        return offerServise.createOffer(offer);
+        return offerService.createOffer(offer);
     }
 
     @PutMapping("/{id}")
     public Offer updateOffer(@PathVariable Long id, @RequestBody Offer updated) {
-        return offerServise.updateOffer(id, updated);
+        return offerService.updateOffer(id, updated);
     }
 
     @DeleteMapping("/{id}")
     public void deleteOffer(@PathVariable Long id) {
-        offerServise.deleteOffer(id);
-    }}
+        offerService.deleteOffer(id);
+    }
+
+    @PostMapping("/{id}/approve")
+    public Offer approveOffer(@PathVariable Long id){
+        return offerService.approveOffer(id);
+    }
+
+
+}

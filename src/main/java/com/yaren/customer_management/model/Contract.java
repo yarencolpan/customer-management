@@ -1,5 +1,5 @@
 package com.yaren.customer_management.model;
-// burada offerın içindeki ürünler ürünlerin miktaraları tutuluyor
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,23 +11,19 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "offer_items")
-public class OfferItem {
+@Table(name = "contracts")
+public class Contract {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private Long offerId;
-    private Long productId;
-    private Long quantity;
-    private Double unitPrice;
-
-
+    private Boolean isSigned = false;
 
     private Long createdById;
     private LocalDateTime createdDate;
     private Long lastModifiedById;
     private LocalDateTime lastModifiedDate;
     private Long deletedById;
+
 }

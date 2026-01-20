@@ -9,8 +9,9 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class OfferServise {
+public class OfferService {
     private final OfferRepository offerRepository;
+    private final ContractService contractService;
 
     public Offer createOffer(Offer offer) {
         // isApproved null gelirse false yapalım (basit koruma)
@@ -39,4 +40,21 @@ public class OfferServise {
     public void deleteOffer(Long id) {
         offerRepository.deleteById(id);
     }
+
+    public Offer approveOffer(Long id){
+        Offer offer = getOfferById(id);
+
+        if (Boolean.TRUE.equals(offer.getIsApproved())) {
+            throw new RuntimeException("Offer already approved. id=" + id);
+        }
+
+            offer.setIsApproved(true);
+            offerRepository.save(offer);
+
+            //onaylanınca sözleşme oluşur
+            contractService.createContractForOffer(id);
+
+        return offer;
+    }
+
 }
